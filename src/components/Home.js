@@ -10,9 +10,10 @@ const Home = () => {
     const [video, setVideo] = useState(null);
     const [view, setView] = useState("");
     const [comment, setComment] = useState("");
+    const [videosID, setVideosID] = useState("")
     const [error, setError] = useState(null);
     const [authorImage, setAuthorImage] = useState(null);
-    const videoUrl = "https://www.youtube.com/watch?v=FBJ2HZr2hH4";
+    const videoUrl = "https://www.youtube.com/watch?v=k9ZAH37doTc";
 
     // download all as image
     const divRef = useRef(null);
@@ -48,6 +49,7 @@ const Home = () => {
 
     useEffect(() => {
         const videoID = getYouTubeVideoID(videoUrl);
+        setVideosID(videoID)
 
         if (!videoID) {
             setError("Invalid YouTube URL");
@@ -122,14 +124,14 @@ const Home = () => {
                 <div className="bg-white text-black flex flex-col rounded-xl overflow-hidden gap-4">
                     <div className="h-auto w-[540px]">
                         <img
-                            src={video.thumbnail}
+                            src={`/api/proxyImage?imageUrl=${encodeURIComponent(video.thumbnail)}`}
                             alt={video.title}
                         />
                     </div>
                     <div className="w-[540px] flex px-4 pb-4 gap-4">
                         {authorImage && (
                             <div className="size-11">
-                                <img src={authorImage} alt="Author's Thumbnail" className="h-full w-full rounded-full" />
+                                <img src={`/api/proxyImage?imageUrl=${encodeURIComponent(authorImage)}`} alt="Author's Thumbnail" className="h-full w-full rounded-full" />
                             </div>
                         )}
                         <div className="">
