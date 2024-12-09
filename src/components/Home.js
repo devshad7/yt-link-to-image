@@ -120,21 +120,21 @@ const Home = () => {
         <div className="h-screen w-full bg-black text-white flex flex-col justify-center items-center">
             <div className="flex flex-col items-center gap-2" ref={divRef}>
                 <div className="bg-white text-black flex flex-col rounded-xl overflow-hidden gap-4">
-                    <div className="h-auto w-[540px]">
+                    <div className="h-auto w-96 md:w-[540px]">
                         <img
                             src={`/api/proxyImage?imageUrl=${encodeURIComponent(video.thumbnail)}`}
                             alt={video.title}
                         />
                     </div>
-                    <div className="w-[540px] flex px-4 pb-4 gap-4">
+                    <div className="w-96 md:w-[540px] flex px-4 pb-4 gap-4">
                         {authorImage && (
-                            <div className="size-11">
-                                <img src={`/api/proxyImage?imageUrl=${encodeURIComponent(authorImage)}`} alt="Author's Thumbnail" className="h-full w-full rounded-full" />
+                            <div className="size-16 md:size-12">
+                                <img src={`/api/proxyImage?imageUrl=${encodeURIComponent(authorImage)}`} alt="Author's Thumbnail" className="size-10 rounded-full" />
                             </div>
                         )}
                         <div className="">
-                            <h1 className="text-lg font-semibold leading-6">{video.title}</h1>
-                            <div className="text-gray-500 font-semibold">
+                            <h1 className="text-base md:text-lg font-semibold leading-6">{video.title}</h1>
+                            <div className="text-gray-500 font-semibold md:text-base text-sm">
                                 <p>{video.channelTitle}</p>
                                 <p>{view} views · {comment} comments</p>
                             </div>
@@ -143,7 +143,7 @@ const Home = () => {
                 </div>
                 <img src="/assets/logo.png" alt="" className="w-24 h-auto" />
             </div>
-            <div className="w-[540px]">
+            <div className="w-96 md:w-[540px]">
                 <Button variant="secondary" onClick={handleDownload}>
                     <Download />
                 </Button>
