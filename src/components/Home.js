@@ -10,7 +10,6 @@ const Home = () => {
     const [video, setVideo] = useState(null);
     const [view, setView] = useState("");
     const [comment, setComment] = useState("");
-    const [videosID, setVideosID] = useState("")
     const [error, setError] = useState(null);
     const [authorImage, setAuthorImage] = useState(null);
     const videoUrl = "https://www.youtube.com/watch?v=k9ZAH37doTc";
@@ -22,7 +21,7 @@ const Home = () => {
         if (divRef.current) {
             try {
                 const dataUrl = await toPng(divRef.current);
-                download(dataUrl, 'div-image.png');
+                download(dataUrl, `${video.title}.png`);
             } catch (error) {
                 console.error('Failed to download the image:', error);
             }
@@ -49,7 +48,6 @@ const Home = () => {
 
     useEffect(() => {
         const videoID = getYouTubeVideoID(videoUrl);
-        setVideosID(videoID)
 
         if (!videoID) {
             setError("Invalid YouTube URL");
